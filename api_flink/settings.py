@@ -56,7 +56,12 @@ INSTALLED_APPS = DJANGO_APPS+LOCAL_APPS
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
-    'DEFAULT_AUTHENTICATION_CLASSES' : ('rest_framework.authentication.TokenAuthentication',),# metodo de autenticacion de Django Rest
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+
+    ),# metodo de autenticacion de Django Rest
     'PAGE_SIZE': 10
 }
 
@@ -106,6 +111,14 @@ DATABASES = {
     }
 }
 
+
+JWT_AUTH = {
+
+
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=3),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+
+}
 AUTH_USER_MODEL='users.User'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
