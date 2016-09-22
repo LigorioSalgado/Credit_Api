@@ -28,7 +28,7 @@ class CreditDetail(APIView):
     def post(self,request,id, format=None):
 
         print request.data
-        r = requests.post("http://api.webhookinbox.com/i/O5HUtRbE/in/",json=request.data)
+        r = requests.post("http://api.webhookinbox.com/i/lNn7CyR2/in/",json=request.data)
 
         return Response({"message":"ok","action":"datos contratos"}, status.HTTP_202_ACCEPTED)
 
@@ -40,16 +40,16 @@ class CreditNotifications(APIView):
 
         if type == '1':
             print request.data
-            r = requests.post("http://api.webhookinbox.com/i/O5HUtRbE/in/", json=request.data)
+            r = requests.post("http://api.webhookinbox.com/i/lNn7CyR2/in/", json=request.data)
             return Response({"message":"ok", "action":"notificacion deposito"},status=status.HTTP_200_OK)
         elif type == '2':
             print request.data
-            r = requests.post("http://api.webhookinbox.com/i/O5HUtRbE/in/", json=request.data)
+            r = requests.post("http://api.webhookinbox.com/i/lNn7CyR2/in/", json=request.data)
             return Response({"message": "ok", "action": "notificacion pago"}, status=status.HTTP_200_OK)
 
         else:
             print request.data
-            r = requests.post("http://api.webhookinbox.com/i/O5HUtRbE/in/", json=request.data)
+            r = requests.post("http://api.webhookinbox.com/i/lNn7CyR2/in/", json=request.data)
             return Response({"message": "error", "detail": "tipo de notificacion no especificado"}, status=status.HTTP_400_BAD_REQUEST)
 
 """
